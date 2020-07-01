@@ -1,0 +1,27 @@
+Git Pull - 
+
+Used to read from a remote repository. It is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit.
+The git pull command first runs git fetch which downloads content from the specified remote repository. Then a git merge is executed to merge the remote content refs and heads into a new local merge commit.Git pull downloads all the changes from the point where the local and master diverged. Git pull will fetch the diverged remote commits, The pull process will then create a new local merge commit containing the content of the new diverged remote commits.
+
+	git pull <remote> - Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. This is the same as 
+	git fetch <remote> followed by git merge origin/<current-branch>.
+
+	git pull --no-commit <remote> - Similar to the default invocation, fetches the remote content but does not create a new merge commit.
+
+	git pull --rebase <remote> - Same as the previous pull Instead of using git merge to integrate the remote branch with the local one.
+
+Hence git pull will download remote content and immediately attempt to change the local state to match that content.
+
+
+Git Merge - 
+
+git merge is used to combine two branches.git merge takes two commit pointers, usually the branch tips, and will find a common base commit between them. Once Git finds a common base commit it will create a new "merge commit" that combines the changes of each queued merge commit sequence.
+Merge commits are unique against other commits in the fact that they have two parent commits. When creating a merge commit Git will attempt to auto magically merge the separate histories If Git encounters a piece of data that is changed in both histories it will be unable to automatically combine them. This scenario is a version control conflict and Git will need user intervention to continue.
+
+Git merging combines sequences of commits into one unified history of commits.
+There are two main ways Git will merge: Fast Forward and Three way
+Git can automatically merge commits unless there are changes that conflict in both commit sequences.
+
+A fast-forward merge can occur when there is a linear path from the current branch tip to the target branch. Instead of “actually” merging the branches, all Git has to do to integrate the histories is move (i.e., “fast forward”) the current branch tip up to the target branch tip. This effectively combines the histories, since all of the commits reachable from the target branch are now available through the current one. A fast-forward merge is not possible if the branches have diverged.
+
+3-way merges use a dedicated commit to tie together the two histories. The nomenclature comes from the fact that Git uses three commits to generate the merge commit: the two branch tips and their common ancestor. 
