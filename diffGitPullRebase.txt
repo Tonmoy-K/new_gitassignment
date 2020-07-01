@@ -1,0 +1,14 @@
+git pull
+
+Used to read from a remote repository. It is actually a combination of two other commands, git fetch followed by git merge. In the first stage of operation git pull will execute a git fetch scoped to the local branch that HEAD is pointed at. Once the content is downloaded, git pull will enter a merge workflow. A new merge commit will be-created and HEAD updated to point at the new commit.
+The git pull command first runs git fetch which downloads content from the specified remote repository. Then a git merge is executed to merge the remote content refs and heads into a new local merge commit.Git pull downloads all the changes from the point where the local and master diverged. Git pull will fetch the diverged remote commits, The pull process will then create a new local merge commit containing the content of the new diverged remote commits.
+
+
+git pull --rebase
+
+It works similar to git pull but instead of merge after fetch it does not create a new commit and append them to the local origin/master commit history.The --rebase option can be used to ensure a linear history by preventing unnecessary merge commits. 
+
+	git checkout master 
+	git pull --rebase origin
+
+This simply moves the local changes onto the top of what everybody else has already contributed.
